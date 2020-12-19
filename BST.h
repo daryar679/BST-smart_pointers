@@ -43,16 +43,18 @@ BST::BST()
 
 bool BST::find(int value)
 {	
-	while (root)
+	shared_ptr<Node> currNode = root;
+
+	while (currNode)
 	{
-		if (root->key == value)
+		if (currNode->key == value)
 			return true;
 		
-		else if (root->key > value)
-			root = root->left_children;
+		else if (currNode->key > value)
+			currNode = currNode->left_children;
 		
 		else
-			root = root->right_children;
+			currNode = currNode->right_children;
 	}
 
 	return false;
